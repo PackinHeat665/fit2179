@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Australian Tourism Visualisation</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+<body>
+  <h1>Exploring Australia: Tourism Trends and Destinations</h1>
+
+  <p>
+    This project explores tourism trends across Australia using maps,
+    charts, and interactive visualisations.
+  </p>
+
+  <h2>Test Chart</h2>
+  <div id="test_chart"></div>
+
+  <script>
+    vegaEmbed("#test_chart", "js/test.json");
+  </script>
+</body>
+</html>
