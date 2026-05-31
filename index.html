@@ -20,8 +20,140 @@
   <h2>Test Chart</h2>
   <div id="test_chart"></div>
 
+<<<<<<< HEAD
   <script>
     vegaEmbed("#test_chart", "js/test.json");
   </script>
+=======
+    <div class="chart-card">
+      <div class="chart-split">
+        <div class="chart-main">
+          <h3>Tourism distribution across Australia</h3>
+          <div id="map_state_tourism"></div>
+        </div>
+        <div class="chart-side-text">
+          <h3>What the map shows</h3>
+          <p>Tourism activity is strongest in the eastern states, especially New South Wales, Victoria and Queensland. These states combine major cities, transport links, beaches and well-known visitor destinations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Top states by tourism trips</h3>
+      <div id="bar_state_ranking"></div>
+    </div>
+  </section>
+
+  <section id="trends" class="story-section">
+    <div class="section-intro">
+      <p class="section-tag">Section 2 · Time Trends</p>
+      <h2>How has tourism changed over time?</h2>
+      <p>Tourism changes over time, and trips do not always move in the same way as spending. Comparing both measures helps show whether tourism is growing through more visitors, higher spending, or both.</p>
+      <div class="how-box">Click a state in the legend to highlight it and fade the other states.</div>
+    </div>
+
+    <div class="two-chart-grid">
+      <div class="chart-card">
+        <h3>Tourism trips by year</h3>
+        <div id="line_tourism_trends"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Tourism spending by year</h3>
+        <div id="area_spending_trends"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="behaviour" class="story-section">
+    <div class="section-intro">
+      <p class="section-tag">Section 3 · Travel Behaviour</p>
+      <h2>How and why do people travel?</h2>
+      <p>Domestic tourism is shaped by the type of trip people take, whether they travel within their own state, and the reason for travelling. These charts shift the story from where tourism happens to how people actually travel.</p>
+    </div>
+
+    <div class="two-chart-grid">
+      <div class="chart-card">
+        <h3>Daytrip and overnight tourism</h3>
+        <div id="stacked_daytrip_vs_overnight"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Interstate and intrastate overnight travel</h3>
+        <div id="interstate_intrastate_bar"></div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-split heatmap-split">
+        <div class="chart-main">
+          <h3>Main reasons for domestic travel</h3>
+          <div id="travel_reasons"></div>
+        </div>
+        <div class="chart-side-text">
+          <h3>Travel patterns</h3>
+          <p>Holiday travel is the largest reason for domestic tourism across the major tourism states shown. Visits to friends and relatives form the second-largest category, showing that social travel is also an important part of domestic tourism.</p>
+          <p>Business travel contributes a smaller but still consistent share of visitor activity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="destinations" class="story-section">
+    <div class="section-intro">
+      <p class="section-tag">Section 4 · Destination Hotspots</p>
+      <h2>Which destinations stand out?</h2>
+      <p>State-level patterns give the broad picture, but tourism is also concentrated in specific regions and local destinations. This section shows how major cities, coastal areas and well-known holiday locations shape domestic tourism demand.</p>
+    </div>
+
+    <div class="two-chart-grid">
+      <div class="chart-card">
+        <h3>Major tourism regions</h3>
+        <div id="map_tourism_regions"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Top holiday destination LGAs</h3>
+        <div id="holiday_hotspots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="spending" class="story-section">
+    <div class="section-intro">
+      <p class="section-tag">Section 5 · Tourism Value</p>
+      <h2>Do more trips always mean more spending?</h2>
+      <p>Visitor volume and spending are related, but they are not the same measure. This final comparison shows whether states with more trips also generate greater tourism spending.</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-split spending-split">
+        <div class="chart-main">
+          <h3>Tourism spending compared with trip volume</h3>
+          <div id="bubble_spend_vs_trips"></div>
+        </div>
+        <div class="chart-side-text">
+          <h3>Relationship shown</h3>
+          <p>States with higher trip volumes generally generate higher tourism spending. However, the relationship is not perfectly identical, showing that tourism value also depends on trip type, stay length and visitor behaviour.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sources" class="sources-section">
+    <h2>Sources and authorship</h2>
+  </section>
+</main>
+
+<script>
+  vegaEmbed("#map_state_tourism", "js/map_state_tourism.json", {"actions": false});
+  vegaEmbed("#bar_state_ranking", "js/bar_state_ranking.json", {"actions": false});
+  vegaEmbed("#line_tourism_trends", "js/line_tourism_trends.json", {"actions": false});
+  vegaEmbed("#area_spending_trends", "js/area_spending_trends.json", {"actions": false});
+  vegaEmbed("#stacked_daytrip_vs_overnight", "js/stacked_daytrip_vs_overnight.json", {"actions": false});
+  vegaEmbed("#interstate_intrastate_bar", "js/interstate_intrastate_bar.json", {"actions": false});
+  vegaEmbed("#travel_reasons", "js/travel_reasons.json", {"actions": false});
+  vegaEmbed("#map_tourism_regions", "js/map_tourism_regions.json", {"actions": false});
+  vegaEmbed("#holiday_hotspots", "js/holiday_hotspots.json", {"actions": false});
+  vegaEmbed("#bubble_spend_vs_trips", "js/bubble_spend_vs_trips.json", {"actions": false});
+</script>
+>>>>>>> 30d3e03 (committing all graphs and design for assignment 2.)
 </body>
 </html>
