@@ -1,0 +1,12 @@
+{
+  "data": {
+    "url": "data/test.csv"
+  },
+
+  "mark":"bar",
+
+  "encoding":{
+    "x":{"field":"State"},
+    "y":{"field":"Visitors"}
+  }
+}
