@@ -1,21 +1,21 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Overnight tourism trips over time by state",
+  "title": "Domestic tourism spending over time by state",
   "width": 520,
   "height": 330,
-  "params": [{"name": "selectedState", "select": {"type": "point", "fields": ["state_abbrev"]}, "bind": "legend"}],
+  "params": [{"name": "selectedStateSpend", "select": {"type": "point", "fields": ["state_abbrev"]}, "bind": "legend"}],
   "data": {"url": "data/tourism/annual_tourism_by_state.csv"},
-  "transform": [{"filter": "datum.measure == 'Trips' && datum.market == 'All overnight' && datum.state != 'Australia'"}],
-  "mark": {"type": "line", "point": true, "tooltip": true},
+  "transform": [{"filter": "datum.measure == 'Spend' && datum.market == 'All overnight' && datum.state != 'Australia'"}],
+  "mark": {"type": "area", "tooltip": true},
   "encoding": {
     "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": 0}},
-    "y": {"field": "annual_value", "type": "quantitative", "title": "Overnight trips (in thousands)"},
+    "y": {"field": "annual_value", "type": "quantitative", "stack": "zero", "title": "Tourism spending (AUD millions)"},
     "color": {"field": "state_abbrev", "type": "nominal", "title": "State", "legend": {"orient": "bottom"}},
-    "opacity": {"condition": {"param": "selectedState", "value": 1}, "value": 0.15},
+    "opacity": {"condition": {"param": "selectedStateSpend", "value": 1}, "value": 0.15},
     "tooltip": [
       {"field": "state", "title": "State"},
       {"field": "year", "title": "Year"},
-      {"field": "annual_value", "title": "Overnight trips (in thousands)", "format": ",.0f"}
+      {"field": "annual_value", "title": "Tourism spending (AUD millions)", "format": ",.0f"}
     ]
   },
   "config": {

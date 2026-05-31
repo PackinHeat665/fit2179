@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Main reasons for travel in major tourism states",
+  "width": 720,
+  "height": 320,
+  "data": {
+    "values": [
+      {"state": "NSW", "reason": "Business", "visitors": 2718},
+      {"state": "NSW", "reason": "Friends/relatives", "visitors": 9696},
+      {"state": "NSW", "reason": "Holiday", "visitors": 15489},
+      {"state": "NSW", "reason": "Other", "visitors": 1854},
+      {"state": "QLD", "reason": "Business", "visitors": 2052},
+      {"state": "QLD", "reason": "Friends/relatives", "visitors": 7407},
+      {"state": "QLD", "reason": "Holiday", "visitors": 18345},
+      {"state": "QLD", "reason": "Other", "visitors": 3541},
+      {"state": "VIC", "reason": "Business", "visitors": 2265},
+      {"state": "VIC", "reason": "Friends/relatives", "visitors": 9147},
+      {"state": "VIC", "reason": "Holiday", "visitors": 12303},
+      {"state": "VIC", "reason": "Other", "visitors": 1740},
+      {"state": "WA", "reason": "Business", "visitors": 903},
+      {"state": "WA", "reason": "Friends/relatives", "visitors": 3192},
+      {"state": "WA", "reason": "Holiday", "visitors": 5106},
+      {"state": "WA", "reason": "Other", "visitors": 645}
+    ]
+  },
+  "mark": {"type": "rect", "tooltip": true},
+  "encoding": {
+    "x": {"field": "reason", "type": "nominal", "title": "Reason", "axis": {"labelAngle": 0}},
+    "y": {"field": "state", "type": "nominal", "title": "State"},
+    "color": {
+      "field": "visitors",
+      "type": "quantitative",
+      "title": "Visitors (in thousands)",
+      "scale": {"scheme": "blues", "domain": [0, 20000]},
+      "legend": {"tickCount": 5}
+    },
+    "tooltip": [
+      {"field": "state", "title": "State"},
+      {"field": "reason", "title": "Reason"},
+      {"field": "visitors", "title": "Visitors (in thousands)", "format": ",.0f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 13},
+    "title": {"fontSize": 16, "anchor": "start"}
+  }
+}

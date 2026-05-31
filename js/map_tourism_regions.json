@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Major tourism regions across Australia",
+  "width": 430,
+  "height": 390,
+  "layer": [
+    {
+      "data": {"url": "data/maps/australia_states.geojson", "format": {"type": "json", "property": "features"}},
+      "projection": {"type": "mercator", "center": [134, -27], "scale": 500, "translate": [215, 200]},
+      "mark": {"type": "geoshape", "fill": "#d6d0bd", "stroke": "#4a4a3d", "strokeWidth": 1.1}
+    },
+    {
+      "data": {
+        "values": [
+          {"region": "Sydney", "lon": 151.21, "lat": -33.87, "visitors": 980},
+          {"region": "Melbourne", "lon": 144.96, "lat": -37.81, "visitors": 920},
+          {"region": "Gold Coast", "lon": 153.43, "lat": -28.02, "visitors": 870},
+          {"region": "Cairns", "lon": 145.77, "lat": -16.92, "visitors": 760},
+          {"region": "Perth", "lon": 115.86, "lat": -31.95, "visitors": 620},
+          {"region": "Hobart", "lon": 147.32, "lat": -42.88, "visitors": 410},
+          {"region": "Adelaide", "lon": 138.60, "lat": -34.93, "visitors": 530},
+          {"region": "Darwin", "lon": 130.84, "lat": -12.46, "visitors": 300}
+        ]
+      },
+      "projection": {"type": "mercator", "center": [134, -27], "scale": 500, "translate": [215, 200]},
+      "mark": {"type": "circle", "opacity": 0.78, "fill": "#e9783f", "stroke": "#5c2e18", "strokeWidth": 1.1, "tooltip": true},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "visitors",
+          "type": "quantitative",
+          "title": "Visitors (in thousands)",
+          "scale": {"domain": [0, 1000], "range": [20, 3200]},
+          "legend": {"orient": "bottom", "direction": "horizontal", "titleLimit": 200}
+        },
+        "tooltip": [
+          {"field": "region", "title": "Tourism region"},
+          {"field": "visitors", "title": "Visitors (in thousands)", "format": ",.0f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "title": {"fontSize": 16, "anchor": "start"},
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+  }
+}

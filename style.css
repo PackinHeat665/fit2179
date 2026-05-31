@@ -1,16 +1,238 @@
+html { scroll-behavior: smooth; }
+
 body {
-  font-family: Arial, sans-serif;
-  max-width: 1100px;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  max-width: 1480px;
   margin: auto;
-  padding: 40px;
-  background-color: #f7f7f7;
-  color: #222;
+  padding: 0 42px 50px 42px;
+  background: linear-gradient(180deg, #e9f3f7 0%, #f6f1e7 45%, #eef4ed 100%);
+  color: #1f2d2f;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 252, 244, 0.96);
+  backdrop-filter: blur(8px);
+  padding: 14px 22px;
+  margin: 0 -42px 34px -42px;
+  border-bottom: 1px solid #c8b98f;
+  display: flex;
+  gap: 26px;
+  justify-content: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #21515c;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+
+.navbar a:hover { color: #c46b2d; }
+
+.hero {
+  text-align: center;
+  padding: 38px 20px 30px 20px;
+  border-bottom: 4px solid #21515c;
+  margin-bottom: 34px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 13px;
+  font-weight: 800;
+  color: #a05a2c;
+  margin-bottom: 10px;
 }
 
 h1 {
-  font-size: 36px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 58px;
+  line-height: 1.05;
+  margin: 0;
+  color: #14353c;
+}
+
+.subtitle {
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 850px;
+  margin: 16px auto 0 auto;
+  color: #3e5558;
+}
+
+.story-section {
+  background: rgba(255, 252, 244, 0.96);
+  border: 1px solid #d4c39a;
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 36px;
+  box-shadow: 0 12px 30px rgba(52, 63, 58, 0.10);
+  scroll-margin-top: 85px;
+}
+
+.section-intro {
+  border-left: 7px solid #e08a3e;
+  padding-left: 22px;
+  margin-bottom: 26px;
+}
+
+.section-tag {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 12px;
+  font-weight: 900;
+  color: #a05a2c;
+  margin: 0 0 8px 0;
 }
 
 h2 {
-  margin-top: 40px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  line-height: 1.15;
+  margin: 0 0 12px 0;
+  color: #14353c;
+}
+
+h3 {
+  font-size: 21px;
+  margin: 0 0 14px 0;
+  color: #1b5363;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: #36494d;
+  margin: 0 0 14px 0;
+}
+
+.two-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.chart-card {
+  background: #ffffff;
+  border: 1px solid #d8c799;
+  border-radius: 18px;
+  padding: 24px;
+  margin-top: 22px;
+  box-shadow: 0 7px 20px rgba(52, 63, 58, 0.08);
+  overflow: visible;
+  height: 100%;
+}
+
+.chart-split {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.heatmap-split {
+  grid-template-columns: minmax(0, 2.5fr) minmax(300px, 1fr);
+}
+
+.spending-split {
+  grid-template-columns: minmax(0, 3fr) minmax(290px, 1fr);
+}
+
+.chart-main {
+  min-width: 0;
+}
+
+.chart-side-text {
+  position: relative;
+  padding-left: 26px;
+}
+
+.chart-side-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 3px;
+  background: #d8c799;
+  border-radius: 999px;
+}
+
+.chart-side-text h3 {
+  color: #a05a2c;
+}
+
+.chart-side-text p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.how-box {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 15px;
+  background: #fff3df;
+  border: 1px solid #e2bd83;
+  border-radius: 13px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #725024;
+  font-weight: 800;
+}
+
+.sources-section {
+  background: rgba(255, 252, 244, 0.96);
+  border-top: 4px solid #21515c;
+  padding: 28px 10px 10px 10px;
+  margin-top: 20px;
+}
+
+.sources-section h2 { font-size: 30px; }
+
+.ai-note {
+  font-size: 15px;
+  color: #5e706d;
+}
+
+.vega-bind {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+select {
+  padding: 6px 10px;
+  border: 1px solid #9fb8b3;
+  border-radius: 8px;
+  background: white;
+}
+
+@media (max-width: 1200px) {
+  .two-chart-grid,
+  .chart-split,
+  .heatmap-split,
+  .spending-split {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-side-text {
+    padding-left: 0;
+    padding-top: 18px;
+    border-top: 3px solid #d8c799;
+  }
+
+  .chart-side-text::before {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  body { padding: 0 20px 40px 20px; }
+  .navbar { margin: 0 -20px 28px -20px; flex-wrap: wrap; gap: 14px; }
+  h1 { font-size: 42px; }
 }

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Daytrip and overnight trips by state, 2024",
+  "width": 460,
+  "height": 320,
+  "data": {"url": "data/tourism/state_summary_2024.csv"},
+  "transform": [
+    {"fold": ["overnight_trips_000", "daytrip_trips_000"], "as": ["trip_type", "trips"]},
+    {"calculate": "datum.trip_type == 'overnight_trips_000' ? 'Overnight' : 'Daytrip'", "as": "type"}
+  ],
+  "mark": {"type": "bar", "tooltip": true},
+  "encoding": {
+    "x": {"field": "state_abbrev", "type": "nominal", "title": "State", "axis": {"labelAngle": 0}},
+    "y": {"field": "trips", "type": "quantitative", "title": "Trips (in thousands)"},
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "title": "Trip type",
+      "scale": {"domain": ["Daytrip", "Overnight"], "range": ["#D48A45", "#2F5D8C"]},
+      "legend": {"orient": "bottom", "direction": "horizontal"}
+    },
+    "tooltip": [
+      {"field": "state", "title": "State"},
+      {"field": "type", "title": "Trip type"},
+      {"field": "trips", "title": "Trips (in thousands)", "format": ",.0f"}
+    ]
+  },
+  "config": {
+    "axis": {"labelFontSize": 12, "titleFontSize": 13},
+    "title": {"fontSize": 16, "anchor": "start"},
+    "legend": {"orient": "bottom", "direction": "horizontal", "labelFontSize": 11, "titleFontSize": 12}
+  }
+}

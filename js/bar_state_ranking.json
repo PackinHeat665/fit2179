@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top states by total domestic tourism trips, 2024",
+  "width": 620,
+  "height": 330,
+
+  "data": {
+    "url": "data/tourism/state_summary_2024.csv"
+  },
+
+  "mark": {
+    "type": "bar",
+    "tooltip": true
+  },
+
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "State or territory"
+    },
+
+    "x": {
+      "field": "total_trips_000",
+      "type": "quantitative",
+      "title": "Total trips (in thousands)"
+    },
+
+    "color": {
+      "field": "total_trips_000",
+      "type": "quantitative",
+      "legend": null,
+      "scale": {
+        "scheme": "blues"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "state",
+        "title": "State"
+      },
+      {
+        "field": "total_trips_000",
+        "title": "Total trips (in thousands)",
+        "format": ",.0f"
+      },
+      {
+        "field": "overnight_trips_000",
+        "title": "Overnight trips (in thousands)",
+        "format": ",.0f"
+      },
+      {
+        "field": "daytrip_trips_000",
+        "title": "Day trips (in thousands)",
+        "format": ",.0f"
+      }
+    ]
+  },
+
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+
+    "title": {
+      "fontSize": 16,
+      "anchor": "start"
+    }
+  }
+}
