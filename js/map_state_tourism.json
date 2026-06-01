@@ -1,8 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Domestic tourism by state, 2024",
-  "width": 620,
-  "height": 430,
+  "width": 900,
+  "height": 660,
   "params": [
     {
       "name": "metric",
@@ -26,7 +25,7 @@
       }
     }
   ],
-  "projection": {"type": "mercator", "center": [134, -26], "scale": 680, "translate": [310, 215]},
+  "projection": {"type": "mercator", "center": [134, -27.5], "scale": 710, "translate": [450, 250]},
   "layer": [
     {
       "transform": [{"filter": "metric == 'trips'"}],
@@ -37,7 +36,16 @@
           "type": "quantitative",
           "title": "Trips (in thousands)",
           "scale": {"scheme": "blues", "domain": [0, 120000]},
-          "legend": {"orient": "bottom", "direction": "horizontal", "offset": 10, "titleLimit": 200, "tickCount": 7, "format": ",.0f"}
+          "legend": {
+            "orient": "none",
+            "legendX": 70,
+            "legendY": 530,
+            "direction": "horizontal",
+            "titleLimit": 200,
+            "tickCount": 4,
+            "format": ",.0f",
+            "gradientLength": 310
+          }
         },
         "tooltip": [
           {"field": "properties.STATE_NAME", "title": "State"},
@@ -56,7 +64,16 @@
           "type": "quantitative",
           "title": "Spending (AUD millions)",
           "scale": {"scheme": "greens", "domain": [0, 60000]},
-          "legend": {"orient": "bottom", "direction": "horizontal", "offset": 10, "titleLimit": 200, "tickCount": 7, "format": ",.0f"}
+          "legend": {
+            "orient": "none",
+            "legendX": 520,
+            "legendY": 530,
+            "direction": "horizontal",
+            "titleLimit": 200,
+            "tickCount": 4,
+            "format": ",.0f",
+            "gradientLength": 310
+          }
         },
         "tooltip": [
           {"field": "properties.STATE_NAME", "title": "State"},
@@ -65,12 +82,25 @@
           {"field": "total_spend_millions", "title": "Spending (AUD millions)", "format": ",.0f"}
         ]
       }
+    },
+    {
+      "data": {"values": [{}]},
+      "mark": {
+        "type": "text",
+        "x": 610,
+        "y": 210,
+        "text": "Eastern states show\nstrongest tourism activity",
+        "align": "left",
+        "baseline": "middle",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "fill": "#174955"
+      }
     }
   ],
   "resolve": {"scale": {"color": "independent"}},
   "config": {
     "view": {"stroke": null},
-    "title": {"fontSize": 16, "anchor": "start"},
     "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }

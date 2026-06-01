@@ -1,103 +1,78 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Share of interstate and intrastate overnight trips, 2024",
-  "width": 420,
-  "height": 360,
-
-  "data": {
-    "url": "data/tourism/state_summary_2024.csv"
-  },
-
+  "width": 520,
+  "height": 430,
+  "data": {"url": "data/tourism/state_summary_2024.csv"},
   "transform": [
+    {"filter": "datum.state != 'Australia'"},
+    {"fold": ["interstate_trips_000", "intrastate_trips_000"], "as": ["travel_type_raw", "trips"]},
+    {"calculate": "datum.travel_type_raw == 'interstate_trips_000' ? 'Interstate' : 'Intrastate'", "as": "travel_type"},
+    {"aggregate": [{"op": "sum", "field": "trips", "as": "total_trips"}], "groupby": ["travel_type"]},
+    {"joinaggregate": [{"op": "sum", "field": "total_trips", "as": "overall_trips"}]},
+    {"calculate": "datum.total_trips / datum.overall_trips", "as": "share"}
+  ],
+  "layer": [
     {
-      "filter": "datum.state != 'Australia'"
+      "mark": {"type": "arc", "innerRadius": 95, "outerRadius": 150, "tooltip": true},
+      "encoding": {
+        "theta": {"field": "total_trips", "type": "quantitative"},
+        "color": {
+          "field": "travel_type",
+          "type": "nominal",
+          "title": "Travel type",
+          "scale": {"domain": ["Interstate", "Intrastate"], "range": ["#4C78A8", "#F58518"]},
+          "legend": {
+            "orient": "none",
+            "legendX": 180,
+            "legendY": 405,
+            "direction": "horizontal",
+            "columns": 2,
+            "titleAnchor": "middle",
+            "labelFontSize": 12,
+            "titleFontSize": 13
+          }
+        },
+        "tooltip": [
+          {"field": "travel_type", "title": "Travel type"},
+          {"field": "total_trips", "title": "Overnight trips (in thousands)", "format": ",.0f"},
+          {"field": "share", "title": "Share of trips", "format": ".1%"}
+        ]
+      }
     },
     {
-      "fold": [
-        "interstate_trips_000",
-        "intrastate_trips_000"
+      "data": {"values": [{}]},
+      "mark": {
+        "type": "text",
+        "text": "Total overnight trips",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "fill": "#174955",
+        "y": 190
+      }
+    },
+    {
+      "transform": [
+        {"aggregate": [{"op": "max", "field": "overall_trips", "as": "total"}]},
+        {"calculate": "format(datum.total, ',.0f')", "as": "label"}
       ],
-      "as": [
-        "travel_type_raw",
-        "trips"
-      ]
-    },
-    {
-      "calculate": "datum.travel_type_raw == 'interstate_trips_000' ? 'Interstate' : 'Intrastate'",
-      "as": "travel_type"
-    },
-    {
-      "aggregate": [
-        {
-          "op": "sum",
-          "field": "trips",
-          "as": "total_trips"
-        }
-      ],
-      "groupby": [
-        "travel_type"
-      ]
-    },
-    {
-      "joinaggregate": [
-        {
-          "op": "sum",
-          "field": "total_trips",
-          "as": "overall_trips"
-        }
-      ]
-    },
-    {
-      "calculate": "datum.total_trips / datum.overall_trips",
-      "as": "share"
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "fill": "#174955",
+        "y": 220
+      },
+      "encoding": {
+        "text": {"field": "label"}
+      }
     }
   ],
-
-  "mark": {
-    "type": "arc",
-    "innerRadius": 80,
-    "outerRadius": 150,
-    "tooltip": true
-  },
-
-  "encoding": {
-    "theta": {
-      "field": "total_trips",
-      "type": "quantitative"
-    },
-    "color": {
-      "field": "travel_type",
-      "type": "nominal",
-      "title": "Travel type"
-    },
-    "tooltip": [
-      {
-        "field": "travel_type",
-        "title": "Travel type"
-      },
-      {
-        "field": "total_trips",
-        "title": "Overnight trips (in thousands)",
-        "format": ",.0f"
-      },
-      {
-        "field": "share",
-        "title": "Share of trips",
-        "format": ".1%"
-      }
-    ]
-  },
-
   "config": {
-    "title": {
-      "fontSize": 16,
-      "anchor": "start"
-    },
-    "legend": {
-      "orient": "bottom"
-    },
-    "view": {
-      "stroke": null
-    }
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 12, "titleFontSize": 13}
   }
 }

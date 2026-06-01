@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Top holiday destination local government areas",
   "width": 430,
   "height": 420,
   "data": {"url": "data/destinations/top_holiday_lgas.csv"},
@@ -33,6 +32,15 @@
           {"field": "state", "title": "State"},
           {"field": "tot_rsn_vis_000_holiday", "title": "Holiday visitors (in thousands)", "format": ",.0f"}
         ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.rank == 1"}],
+      "mark": {"type": "text", "align": "right", "baseline": "middle", "fontSize": 12, "fontWeight": "bold", "fill": "#5c3b10", "dx": -10, "dy": -12},
+      "encoding": {
+        "x": {"field": "tot_rsn_vis_000_holiday", "type": "quantitative"},
+        "y": {"field": "lga_name18", "type": "nominal", "sort": "-x"},
+        "text": {"value": "Top holiday LGA"}
       }
     }
   ],

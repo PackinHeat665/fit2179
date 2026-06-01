@@ -1,73 +1,37 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Top states by total domestic tourism trips, 2024",
-  "width": 620,
-  "height": 330,
-
-  "data": {
-    "url": "data/tourism/state_summary_2024.csv"
-  },
-
-  "mark": {
-    "type": "bar",
-    "tooltip": true
-  },
-
-  "encoding": {
-    "y": {
-      "field": "state",
-      "type": "nominal",
-      "sort": "-x",
-      "title": "State or territory"
-    },
-
-    "x": {
-      "field": "total_trips_000",
-      "type": "quantitative",
-      "title": "Total trips (in thousands)"
-    },
-
-    "color": {
-      "field": "total_trips_000",
-      "type": "quantitative",
-      "legend": null,
-      "scale": {
-        "scheme": "blues"
+  "width": 1080,
+  "height": 430,
+  "data": {"url": "data/tourism/state_summary_2024.csv"},
+  "transform": [{"calculate": "datum.state", "as": "state_name"}],
+  "layer": [
+    {
+      "mark": {"type": "bar", "tooltip": true},
+      "encoding": {
+        "y": {"field": "state_name", "type": "nominal", "title": "State or territory", "sort": "-x"},
+        "x": {"field": "total_trips_000", "type": "quantitative", "title": "Total trips (in thousands)", "axis": {"format": ",.0f"}},
+        "color": {"field": "total_trips_000", "type": "quantitative", "scale": {"scheme": "blues"}, "legend": null},
+        "tooltip": [
+          {"field": "state_name", "title": "State"},
+          {"field": "total_trips_000", "title": "Total trips (in thousands)", "format": ",.0f"},
+          {"field": "overnight_trips_000", "title": "Overnight trips (in thousands)", "format": ",.0f"},
+          {"field": "daytrip_trips_000", "title": "Day trips (in thousands)", "format": ",.0f"}
+        ]
       }
     },
-
-    "tooltip": [
-      {
-        "field": "state",
-        "title": "State"
-      },
-      {
-        "field": "total_trips_000",
-        "title": "Total trips (in thousands)",
-        "format": ",.0f"
-      },
-      {
-        "field": "overnight_trips_000",
-        "title": "Overnight trips (in thousands)",
-        "format": ",.0f"
-      },
-      {
-        "field": "daytrip_trips_000",
-        "title": "Day trips (in thousands)",
-        "format": ",.0f"
+    {
+      "data": {"values": [{"x": 83500, "y": "New South Wales", "label": "NSW leads domestic trips"}]},
+      "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 13, "fontWeight": "bold", "fill": "white"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "nominal", "sort": "-x"},
+        "text": {"field": "label"}
       }
-    ]
-  },
-
-  "config": {
-    "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 13
-    },
-
-    "title": {
-      "fontSize": 16,
-      "anchor": "start"
     }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 13},
+    "title": {"fontSize": 16, "anchor": "start"}
   }
 }

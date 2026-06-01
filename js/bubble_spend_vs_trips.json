@@ -1,24 +1,45 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Tourism spending compared with trip volume by state, 2024",
-  "width": 760,
-  "height": 400,
+  "width": 1080,
+  "height": 430,
   "data": {"url": "data/tourism/state_summary_2024.csv"},
-  "mark": {"type": "circle", "tooltip": true, "size": 260, "opacity": 0.85, "stroke": "black", "strokeWidth": 0.8},
-  "encoding": {
-    "x": {"field": "total_trips_000", "type": "quantitative", "title": "Total trips (in thousands)"},
-    "y": {"field": "total_spend_millions", "type": "quantitative", "title": "Total spending (AUD millions)"},
-    "color": {"field": "state_abbrev", "type": "nominal", "title": "State"},
-    "tooltip": [
-      {"field": "state", "title": "State"},
-      {"field": "total_trips_000", "title": "Total trips (in thousands)", "format": ",.0f"},
-      {"field": "total_spend_millions", "title": "Total spending (AUD millions)", "format": ",.0f"},
-      {"field": "avg_overnight_nights_per_trip", "title": "Average nights per trip", "format": ".2f"}
-    ]
-  },
+  "layer": [
+    {
+      "mark": {"type": "circle", "size": 180, "opacity": 0.85, "stroke": "#222", "strokeWidth": 1.1, "tooltip": true},
+      "encoding": {
+        "x": {"field": "total_trips_000", "type": "quantitative", "title": "Total trips (in thousands)", "scale": {"domain": [0, 125000]}, "axis": {"format": ",.0f"}},
+        "y": {"field": "total_spend_millions", "type": "quantitative", "title": "Total spending (AUD millions)", "scale": {"domain": [0, 45000]}, "axis": {"format": ",.0f"}},
+        "color": {
+          "field": "state_abbrev",
+          "type": "nominal",
+          "title": "State",
+          "scale": {
+            "domain": ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"],
+            "range": ["#4C78A8", "#F58518", "#E45756", "#72B7B2", "#54A24B", "#EECA3B", "#B279A2", "#FF9DA6"]
+          },
+          "legend": {"orient": "right"}
+        },
+        "tooltip": [
+          {"field": "state", "title": "State"},
+          {"field": "total_trips_000", "title": "Total trips (in thousands)", "format": ",.0f"},
+          {"field": "total_spend_millions", "title": "Total spending (AUD millions)", "format": ",.0f"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"x": 77000, "y": 38000, "note": "Higher trip volumes generally\nproduce higher spending"}]},
+      "mark": {"type": "text", "align": "left", "baseline": "middle", "fontSize": 13, "fontStyle": "italic", "fill": "#6b4a1f"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "note"}
+      }
+    }
+  ],
   "config": {
+    "view": {"stroke": null},
     "axis": {"labelFontSize": 12, "titleFontSize": 13},
     "title": {"fontSize": 16, "anchor": "start"},
-    "legend": {"orient": "right"}
+    "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }

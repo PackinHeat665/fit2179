@@ -60,7 +60,7 @@ h1 {
 .subtitle {
   font-size: 20px;
   line-height: 1.6;
-  max-width: 850px;
+  max-width: 950px;
   margin: 16px auto 0 auto;
   color: #3e5558;
 }
@@ -73,6 +73,7 @@ h1 {
   margin-bottom: 36px;
   box-shadow: 0 12px 30px rgba(52, 63, 58, 0.10);
   scroll-margin-top: 85px;
+  box-sizing: border-box;
 }
 
 .section-intro {
@@ -114,7 +115,7 @@ p {
 .two-chart-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  gap: 34px;
   align-items: stretch;
 }
 
@@ -125,52 +126,145 @@ p {
   padding: 24px;
   margin-top: 22px;
   box-shadow: 0 7px 20px rgba(52, 63, 58, 0.08);
-  overflow: visible;
+  overflow: hidden;
   height: 100%;
+  box-sizing: border-box;
 }
 
-.chart-split {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr);
-  gap: 28px;
+.two-chart-grid .chart-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.two-chart-grid .chart-divider {
+  margin-top: auto;
+}
+
+#trends .two-chart-grid .chart-card {
+  min-height: auto;
+}
+
+#behaviour .two-chart-grid {
+  margin-bottom: 34px;
+}
+
+#behaviour .two-chart-grid .chart-card {
+  min-height: auto;
+}
+
+#behaviour .two-chart-grid .center-chart {
+  min-height: 420px;
+}
+
+#behaviour > .chart-card {
+  margin-top: 36px;
+}
+
+.featured-map-card {
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-chart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.heatmap-split {
-  grid-template-columns: minmax(0, 2.5fr) minmax(300px, 1fr);
+.center-chart .vega-embed,
+.center-chart .vega-embed svg,
+.center-chart .vega-embed canvas {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-.spending-split {
-  grid-template-columns: minmax(0, 3fr) minmax(290px, 1fr);
+#map_state_tourism {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.chart-main {
-  min-width: 0;
+#map_state_tourism .vega-embed {
+  width: fit-content !important;
+  position: relative !important;
+  padding-bottom: 48px !important;
 }
 
-.chart-side-text {
-  position: relative;
-  padding-left: 26px;
+#map_state_tourism .vega-bindings {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 4px !important;
+  transform: translateX(-50%) !important;
+  width: max-content !important;
+  display: block !important;
+  text-align: center !important;
+  margin: 0 !important;
 }
 
-.chart-side-text::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 22px;
-  bottom: 22px;
-  width: 3px;
+#map_state_tourism .vega-bind {
+  margin: 0 !important;
+  text-align: center !important;
+  font-size: 14px !important;
+}
+
+#travel_reasons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 28px;
+}
+
+#map_tourism_regions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 45px;
+}
+
+#interstate_intrastate_bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#interstate_intrastate_bar .vega-embed {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#destinations .chart-card {
+  height: auto;
+}
+
+.chart-divider {
+  width: 82%;
+  max-width: 1150px;
+  height: 1px;
   background: #d8c799;
-  border-radius: 999px;
+  margin: 20px auto 18px auto;
 }
 
-.chart-side-text h3 {
-  color: #a05a2c;
-}
-
-.chart-side-text p {
+.chart-caption {
+  max-width: 82%;
+  margin: 0 auto;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.75;
+  color: #36494d;
+  text-align: justify;
+  text-justify: inter-word;
+  box-sizing: border-box;
+}
+
+.two-chart-grid .chart-caption {
+  min-height: 180px;
+}
+
+.narrow-caption {
+  max-width: 82%;
 }
 
 .how-box {
@@ -189,11 +283,30 @@ p {
 .sources-section {
   background: rgba(255, 252, 244, 0.96);
   border-top: 4px solid #21515c;
-  padding: 28px 10px 10px 10px;
+  padding: 34px 40px 24px 40px;
   margin-top: 20px;
 }
 
-.sources-section h2 { font-size: 30px; }
+.sources-section h2 {
+  font-size: 30px;
+}
+
+.sources-section p {
+  max-width: 1700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sources-section a {
+  color: #21515c;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sources-section a:hover {
+  color: #c46b2d;
+  text-decoration: underline;
+}
 
 .ai-note {
   font-size: 15px;
@@ -202,7 +315,6 @@ p {
 
 .vega-bind {
   font-size: 14px;
-  margin-bottom: 10px;
 }
 
 select {
@@ -212,27 +324,58 @@ select {
   background: white;
 }
 
+.conclusion-card {
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.conclusion-card h2 {
+  margin-bottom: 18px;
+}
+
+.conclusion-card p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 @media (max-width: 1200px) {
-  .two-chart-grid,
-  .chart-split,
-  .heatmap-split,
-  .spending-split {
+  .two-chart-grid {
     grid-template-columns: 1fr;
   }
 
-  .chart-side-text {
-    padding-left: 0;
-    padding-top: 18px;
-    border-top: 3px solid #d8c799;
+  #trends .two-chart-grid .chart-card,
+  #behaviour .two-chart-grid .chart-card,
+  #destinations .two-chart-grid .chart-card,
+  .two-chart-grid .chart-caption {
+    min-height: auto;
   }
 
-  .chart-side-text::before {
-    display: none;
+  .two-chart-grid .chart-divider {
+    margin-top: 20px;
+  }
+
+  .featured-map-card {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 1000px) {
-  body { padding: 0 20px 40px 20px; }
-  .navbar { margin: 0 -20px 28px -20px; flex-wrap: wrap; gap: 14px; }
-  h1 { font-size: 42px; }
+  body {
+    padding: 0 20px 40px 20px;
+  }
+
+  .navbar {
+    margin: 0 -20px 28px -20px;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  .chart-caption {
+    text-align: left;
+  }
 }

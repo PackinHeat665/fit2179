@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Daytrip and overnight trips by state, 2024",
   "width": 460,
   "height": 320,
   "data": {"url": "data/tourism/state_summary_2024.csv"},

@@ -10,18 +10,19 @@
 
 <body>
 <nav class="navbar">
-  <a href="#overview">Overview</a>
+  <a href="#overview">Introduction</a>
   <a href="#trends">Trends</a>
   <a href="#behaviour">Travel Behaviour</a>
   <a href="#destinations">Destinations</a>
-  <a href="#spending">Spending</a>
+  <a href="#spending">Trips vs Spending</a>
+  <a href="#conclusion">Conclusion</a>
   <a href="#sources">Sources</a>
 </nav>
 
 <header class="hero">
   <p class="eyebrow">Australia Tourism Report · FIT2179 Data Visualisation 2</p>
   <h1>Exploring Australia Through Tourism Destinations</h1>
-  <p class="subtitle">Where tourists go, how tourism changes, and what attracts visitors across Australia.</p>
+  <p class="subtitle">Domestic tourism plays an important role in Australia's economy, supporting travel activity across states, regions and major visitor destinations. This dashboard explores where Australians travel, why they travel and how tourism activity varies across the country during 2024.</p>
 </header>
 
 <main>
@@ -33,22 +34,18 @@
       <div class="how-box">Use the dropdown on the map to switch between total trips and total spending. Hover over each state for exact values.</div>
     </div>
 
-    <div class="chart-card">
-      <div class="chart-split">
-        <div class="chart-main">
-          <h3>Tourism distribution across Australia</h3>
-          <div id="map_state_tourism"></div>
-        </div>
-        <div class="chart-side-text">
-          <h3>What the map shows</h3>
-          <p>Tourism activity is strongest in the eastern states, especially New South Wales, Victoria and Queensland. These states combine major cities, transport links, beaches and well-known visitor destinations.</p>
-        </div>
-      </div>
+    <div class="chart-card featured-map-card">
+      <h3>Tourism distribution across Australia</h3>
+      <div class="center-chart" id="map_state_tourism"></div>
+      <div class="chart-divider"></div>
+      <p class="chart-caption">Tourism activity is strongest in the eastern states, especially New South Wales, Victoria and Queensland. These states combine large population centres, major transport links, coastal destinations and well-known attractions, making the eastern side of Australia the main centre of domestic tourism activity.</p>
     </div>
 
     <div class="chart-card">
       <h3>Top states by tourism trips</h3>
-      <div id="bar_state_ranking"></div>
+      <div class="center-chart" id="bar_state_ranking"></div>
+      <div class="chart-divider"></div>
+      <p class="chart-caption narrow-caption">The ranking confirms the map pattern. New South Wales and Victoria record the largest domestic trip volumes, followed by Queensland. Smaller states and territories still contribute to domestic tourism, but their trip totals are much lower compared with the major eastern tourism markets.</p>
     </div>
   </section>
 
@@ -63,11 +60,16 @@
     <div class="two-chart-grid">
       <div class="chart-card">
         <h3>Tourism trips by year</h3>
-        <div id="line_tourism_trends"></div>
+        <div class="center-chart" id="line_tourism_trends"></div>
+        <div class="chart-divider"></div>
+        <p class="chart-caption">Overnight trip volumes fall sharply around 2020 before recovering from 2021 onward. New South Wales, Victoria and Queensland remain the largest tourism markets across the period, showing that the same states dominate both current tourism activity and longer-term tourism trends. The recovery pattern suggests strong resilience in Australia's major domestic tourism markets.</p>
       </div>
+
       <div class="chart-card">
         <h3>Tourism spending by year</h3>
-        <div id="area_spending_trends"></div>
+        <div class="center-chart" id="area_spending_trends"></div>
+        <div class="chart-divider"></div>
+        <p class="chart-caption">Tourism spending rises strongly after 2021, especially in the larger tourism states. This suggests that tourism value did not only recover through trip numbers, but also through higher overall spending across domestic travel markets. The increase indicates the growing economic importance of domestic tourism following the post-2020 recovery period.</p>
       </div>
     </div>
   </section>
@@ -82,26 +84,24 @@
     <div class="two-chart-grid">
       <div class="chart-card">
         <h3>Daytrip and overnight tourism</h3>
-        <div id="stacked_daytrip_vs_overnight"></div>
+        <div class="center-chart" id="stacked_daytrip_vs_overnight"></div>
+        <div class="chart-divider"></div>
+        <p class="chart-caption">Daytrips contribute a large share of domestic tourism activity, particularly in the larger states. Overnight trips are also important because they are more closely linked to accommodation, longer stays and higher visitor spending.</p>
       </div>
+
       <div class="chart-card">
         <h3>Interstate and intrastate overnight travel</h3>
-        <div id="interstate_intrastate_bar"></div>
+        <div class="center-chart" id="interstate_intrastate_bar"></div>
+        <div class="chart-divider"></div>
+        <p class="chart-caption">Most overnight domestic travel occurs within state borders. This shows that domestic tourism is strongly supported by local and regional travel, rather than only by interstate movement between major destinations.</p>
       </div>
     </div>
 
     <div class="chart-card">
-      <div class="chart-split heatmap-split">
-        <div class="chart-main">
-          <h3>Main reasons for domestic travel</h3>
-          <div id="travel_reasons"></div>
-        </div>
-        <div class="chart-side-text">
-          <h3>Travel patterns</h3>
-          <p>Holiday travel is the largest reason for domestic tourism across the major tourism states shown. Visits to friends and relatives form the second-largest category, showing that social travel is also an important part of domestic tourism.</p>
-          <p>Business travel contributes a smaller but still consistent share of visitor activity.</p>
-        </div>
-      </div>
+      <h3>Main reasons for domestic travel</h3>
+      <div class="center-chart" id="travel_reasons"></div>
+      <div class="chart-divider"></div>
+      <p class="chart-caption narrow-caption">Holiday travel is the largest reason for domestic tourism across the major tourism states shown. Visits to friends and relatives form the second-largest category, while business travel contributes a smaller but consistent share of visitor activity. This shows that domestic tourism is driven mainly by leisure and social travel, not only by commercial movement.</p>
     </div>
   </section>
 
@@ -115,11 +115,16 @@
     <div class="two-chart-grid">
       <div class="chart-card">
         <h3>Major tourism regions</h3>
-        <div id="map_tourism_regions"></div>
+        <div class="center-chart" id="map_tourism_regions"></div>
+        <div class="chart-divider"></div>
+        <p class="chart-caption">Major tourism hubs are concentrated around capital cities, coastal areas and well-known visitor regions. These locations attract more visitors because they combine transport access, accommodation, attractions and recognisable destination appeal. This continues the earlier pattern where tourism activity is strongest around the eastern and coastal parts of Australia.</p>
       </div>
+
       <div class="chart-card">
         <h3>Top holiday destination LGAs</h3>
-        <div id="holiday_hotspots"></div>
+        <div class="center-chart" id="holiday_hotspots"></div>
+        <div class="chart-divider"></div>
+        <p class="chart-caption">Holiday demand concentrates in a small number of local government areas rather than being evenly spread across Australia. These destinations likely benefit from established tourism infrastructure and strong visitor recognition. This shows that even within tourism-heavy states, visitor activity clusters around a limited number of popular destination areas.</p>
       </div>
     </div>
   </section>
@@ -132,21 +137,36 @@
     </div>
 
     <div class="chart-card">
-      <div class="chart-split spending-split">
-        <div class="chart-main">
-          <h3>Tourism spending compared with trip volume</h3>
-          <div id="bubble_spend_vs_trips"></div>
-        </div>
-        <div class="chart-side-text">
-          <h3>Relationship shown</h3>
-          <p>States with higher trip volumes generally generate higher tourism spending. However, the relationship is not perfectly identical, showing that tourism value also depends on trip type, stay length and visitor behaviour.</p>
-        </div>
-      </div>
+      <h3>Tourism spending compared with trip volume</h3>
+      <div class="center-chart" id="bubble_spend_vs_trips"></div>
+      <div class="chart-divider"></div>
+      <p class="chart-caption">States with higher trip volumes generally generate higher tourism spending. However, the relationship is not perfectly identical, showing that tourism value also depends on trip type, stay length, destination type and visitor behaviour.</p>
+    </div>
+  </section>
+
+  <section id="conclusion" class="story-section">
+    <div class="chart-card conclusion-card">
+      <h2>Overall conclusion</h2>
+      <p>The visualisations show that domestic tourism in Australia is concentrated in the eastern states, particularly New South Wales, Victoria and Queensland. These states attract the largest visitor volumes, contain many of the country's major tourism hubs and generate the highest levels of tourism spending.</p>
+      <p>Holiday travel remains the primary reason for domestic trips, while most overnight travel occurs within state borders rather than between states. Together, these patterns highlight the importance of population centres, regional destinations and established tourism infrastructure in shaping tourism activity across Australia.</p>
     </div>
   </section>
 
   <section id="sources" class="sources-section">
-    <h2>Sources and authorship</h2>
+    <h2>Sources</h2>
+    <p>
+      <strong>Tourism Research Australia (TRA)</strong> – Domestic tourism statistics used for trips, spending, travel purposes, and state-level comparisons.
+      <a href="https://www.tra.gov.au/en/tourism-statistics/domestic-tourism-statistics-results/dots-september-2025" target="_blank">
+        View source
+      </a>
+    </p>
+
+    <p>
+      <strong>Australian Government Data Portal</strong> – Tourism Regions 2021 geographic boundaries used for tourism region and map visualisations.
+      <a href="https://www.data.gov.au/data/dataset/tourism-regions-2021" target="_blank">
+        View source
+      </a>
+    </p>
   </section>
 </main>
 

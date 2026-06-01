@@ -1,17 +1,43 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Overnight tourism trips over time by state",
   "width": 520,
   "height": 330,
-  "params": [{"name": "selectedState", "select": {"type": "point", "fields": ["state_abbrev"]}, "bind": "legend"}],
+  "params": [
+    {
+      "name": "selectedState",
+      "select": {"type": "point", "fields": ["state_abbrev"]},
+      "bind": "legend"
+    }
+  ],
   "data": {"url": "data/tourism/annual_tourism_by_state.csv"},
-  "transform": [{"filter": "datum.measure == 'Trips' && datum.market == 'All overnight' && datum.state != 'Australia'"}],
+  "transform": [
+    {
+      "filter": "datum.measure == 'Trips' && datum.market == 'All overnight' && datum.state != 'Australia'"
+    }
+  ],
   "mark": {"type": "line", "point": true, "tooltip": true},
   "encoding": {
-    "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": 0}},
-    "y": {"field": "annual_value", "type": "quantitative", "title": "Overnight trips (in thousands)"},
-    "color": {"field": "state_abbrev", "type": "nominal", "title": "State", "legend": {"orient": "bottom"}},
-    "opacity": {"condition": {"param": "selectedState", "value": 1}, "value": 0.15},
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "annual_value",
+      "type": "quantitative",
+      "title": "Overnight trips (in thousands)"
+    },
+    "color": {
+      "field": "state_abbrev",
+      "type": "nominal",
+      "title": "State",
+      "legend": {"orient": "bottom"}
+    },
+    "opacity": {
+      "condition": {"param": "selectedState", "value": 1},
+      "value": 0.15
+    },
     "tooltip": [
       {"field": "state", "title": "State"},
       {"field": "year", "title": "Year"},

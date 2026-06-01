@@ -1,13 +1,25 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Major tourism regions across Australia",
   "width": 430,
-  "height": 390,
+  "height": 470,
   "layer": [
     {
-      "data": {"url": "data/maps/australia_states.geojson", "format": {"type": "json", "property": "features"}},
-      "projection": {"type": "mercator", "center": [134, -27], "scale": 500, "translate": [215, 200]},
-      "mark": {"type": "geoshape", "fill": "#d6d0bd", "stroke": "#4a4a3d", "strokeWidth": 1.1}
+      "data": {
+        "url": "data/maps/australia_states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "projection": {
+        "type": "mercator",
+        "center": [134, -31.5],
+        "scale": 500,
+        "translate": [205, 240]
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d6d0bd",
+        "stroke": "#4a4a3d",
+        "strokeWidth": 1.1
+      }
     },
     {
       "data": {
@@ -22,8 +34,20 @@
           {"region": "Darwin", "lon": 130.84, "lat": -12.46, "visitors": 300}
         ]
       },
-      "projection": {"type": "mercator", "center": [134, -27], "scale": 500, "translate": [215, 200]},
-      "mark": {"type": "circle", "opacity": 0.78, "fill": "#e9783f", "stroke": "#5c2e18", "strokeWidth": 1.1, "tooltip": true},
+      "projection": {
+        "type": "mercator",
+        "center": [134, -31.5],
+        "scale": 500,
+        "translate": [205, 240]
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.78,
+        "fill": "#e9783f",
+        "stroke": "#5c2e18",
+        "strokeWidth": 1.1,
+        "tooltip": true
+      },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude": {"field": "lat", "type": "quantitative"},
@@ -31,19 +55,45 @@
           "field": "visitors",
           "type": "quantitative",
           "title": "Visitors (in thousands)",
-          "scale": {"domain": [0, 1000], "range": [20, 3200]},
-          "legend": {"orient": "bottom", "direction": "horizontal", "titleLimit": 200}
+          "scale": {"domain": [0, 1000], "range": [20, 2100]},
+          "legend": {
+            "orient": "right",
+            "offset": 4,
+            "titleLimit": 160
+          }
         },
         "tooltip": [
           {"field": "region", "title": "Tourism region"},
           {"field": "visitors", "title": "Visitors (in thousands)", "format": ",.0f"}
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          {"label": "Major hubs cluster around\ncapital and coastal regions"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "fill": "#174955"
+      },
+      "encoding": {
+        "x": {"value": 200},
+        "y": {"value": 180},
+        "text": {"field": "label"}
+      }
     }
   ],
   "config": {
     "view": {"stroke": null},
-    "title": {"fontSize": 16, "anchor": "start"},
-    "legend": {"labelFontSize": 11, "titleFontSize": 12}
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
   }
 }
